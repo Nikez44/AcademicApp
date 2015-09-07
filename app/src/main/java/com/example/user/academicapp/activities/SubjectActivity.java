@@ -1,6 +1,7 @@
 package com.example.user.academicapp.activities;
 
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.view.View;
 
 import com.example.user.academicapp.R;
 import com.example.user.academicapp.adapters.SubjectRecyclerAdapter;
+import com.example.user.academicapp.fragments.NavigationDrawerFragment;
 import com.example.user.academicapp.helpers.RecyclerItemClickListener;
 import com.example.user.academicapp.models.Subject;
 
@@ -20,6 +22,8 @@ import java.util.List;
 public class SubjectActivity extends AppCompatActivity {
 
     private RecyclerView recy_subjects;
+    private DrawerLayout drawerLayout;
+    private NavigationDrawerFragment drawerFragment;
     private Toolbar toolbar;
 
     @Override
@@ -29,6 +33,8 @@ public class SubjectActivity extends AppCompatActivity {
         loadViews();
         setSupportActionBar(toolbar);
         setPropertiesRecycler();
+
+        drawerFragment.setUp(drawerLayout, toolbar);
 
         recy_subjects.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
@@ -41,6 +47,8 @@ public class SubjectActivity extends AppCompatActivity {
     private void loadViews(){
         toolbar= (Toolbar)findViewById(R.id.toolbar);
         recy_subjects= (RecyclerView)findViewById(R.id.recy);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
     }
 
     private void setPropertiesRecycler(){

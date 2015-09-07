@@ -11,4 +11,9 @@
     <string name="title_activity_subject">SubjectActivity</string>
 
     <string name="hello_world">Hello world!</string>
+
+<!-- Navigation Drawer -->
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
 </resources>
