@@ -15,6 +15,7 @@ import com.example.user.academicapp.adapters.CategoryAdapter;
 import com.example.user.academicapp.fragments.NavigationDrawerFragment;
 import com.example.user.academicapp.helpers.RecyclerItemClickListener;
 import com.example.user.academicapp.models.Category;
+import com.example.user.academicapp.models.Topic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,8 +85,14 @@ public class CategoryActivity extends AppCompatActivity {
                              "yellow",
                              "line" } ;
 
+        ArrayList<Topic> topics = new ArrayList<>();
+
+        for (String color : colors) {
+            topics.add(new Topic(color));
+        }
+
         for(int i =0; i<colors.length && i<names.length; i++){
-            categoryList.add(new Category(names[i], colors[i]));
+            categoryList.add(new Category(names[i], colors[i], topics));
         }
         return categoryList;
     }

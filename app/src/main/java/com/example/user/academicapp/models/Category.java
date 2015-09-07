@@ -1,11 +1,14 @@
 package com.example.user.academicapp.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Category {
 
     private String name;
     private String picture;
     private String color;
-
+    private List<Topic> topics = new ArrayList<Topic>();
 
     public Category() {
     }
@@ -14,9 +17,14 @@ public class Category {
         this.color = color;
     }
 
-    public Category(String name, String color) {
+    public Category(String name, String color, List<Topic> topics) {
         this.name = name;
         this.color = color;
+        this.topics.addAll(topics);
+    }
+
+    public List<Topic> getTopics() {
+        return topics;
     }
 
     public String getName() {

@@ -55,7 +55,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         Category currentCategory = categoryList.get(position);
         holder.txt_name.setText(currentCategory.getName());
         changeBackground(holder, currentCategory.getColor());
-        setPropertiesRecycler(holder);
+        setPropertiesRecycler(holder, currentCategory.getTopics());
+    }
+
+    private void setPropertiesRecycler(ViewHolder holder, List<Topic> topics){
+        TopicAdapter adapter = new TopicAdapter(context, topics);
+        holder.recy_sections.setHasFixedSize(true);
+        holder.recy_sections.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        holder.recy_sections.setAdapter(adapter);
     }
 
     private void changeBackground(ViewHolder holder, String colorStr){
@@ -124,34 +131,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             rl_container = (LinearLayout)view.findViewById(R.id.container);
             recy_sections = (RecyclerView) view.findViewById(R.id.recy);
         }
-    }
-
-
-    private void setPropertiesRecycler(ViewHolder holder){
-        TopicAdapter adapter = new TopicAdapter(context, listDummy());
-        holder.recy_sections.setHasFixedSize(true);
-        holder.recy_sections.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false));
-        holder.recy_sections.setAdapter(adapter);
-    }
-
-    private List<Topic> listDummy(){
-        List<Topic> subjectList = new ArrayList<>();
-
-        String [] colors = { "red",
-                "pink",
-                "purple",
-                "deep_purple",
-                "indigo",
-                "blue",
-                "cyan",
-                "green",
-                "yellow",
-                "line" } ;
-
-        for (String color : colors) {
-            subjectList.add(new Topic(color));
-        }
-        return subjectList;
     }
 
 }
