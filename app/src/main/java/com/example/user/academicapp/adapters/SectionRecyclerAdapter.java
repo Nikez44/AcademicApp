@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.user.academicapp.R;
-import com.example.user.academicapp.models.Section;
+import com.example.user.academicapp.models.Topic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,29 +19,29 @@ import java.util.List;
 public class SectionRecyclerAdapter extends RecyclerView.Adapter<SectionRecyclerAdapter.ViewHolder> {
 
     private final Context context;
-    private List<Section> sectionList;
-    public void add(Section s,int position) {
+    private List<Topic> topicList;
+    public void add(Topic s,int position) {
         position = position == -1 ? getItemCount()  : position;
-        sectionList.add(position, s);
+        topicList.add(position, s);
         notifyItemInserted(position);
     }
 
     public void remove(int position){
         if (position < getItemCount()  ) {
-            sectionList.remove(position);
+            topicList.remove(position);
             notifyItemRemoved(position);
         }
     }
 
-    public SectionRecyclerAdapter(Context context, List<Section> data) {
+    public SectionRecyclerAdapter(Context context, List<Topic> data) {
         this.context = context;
         if (data != null)
-            sectionList = data;
-        else sectionList = new ArrayList<Section>();
+            topicList = data;
+        else topicList = new ArrayList<Topic>();
     }
 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(context).inflate(R.layout.adapter_recy_sections, parent, false);
+        final View view = LayoutInflater.from(context).inflate(R.layout.item_recy_topic, parent, false);
         return new ViewHolder(view);
     }
 
@@ -53,7 +53,7 @@ public class SectionRecyclerAdapter extends RecyclerView.Adapter<SectionRecycler
 
     @Override
     public int getItemCount() {
-        return sectionList.size();
+        return topicList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -72,7 +72,7 @@ public class SectionRecyclerAdapter extends RecyclerView.Adapter<SectionRecycler
 
    private void changeBackground(ViewHolder holder,int position){
         int color;
-        switch (sectionList.get(position).getColor()){
+        switch (topicList.get(position).getColor()){
             case "red":
                 color =context.getResources().getColor(R.color.red);
                 break;

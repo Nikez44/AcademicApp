@@ -3,14 +3,14 @@ package com.example.user.academicapp.models;
 /**
  * Created by Elsy on 01/09/2015.
  */
-public class Section {
+public class Topic {
 
     private String color;
 
-    public Section() {
+    public Topic() {
     }
 
-    public Section(String color) {
+    public Topic(String color) {
         this.color = color;
     }
 

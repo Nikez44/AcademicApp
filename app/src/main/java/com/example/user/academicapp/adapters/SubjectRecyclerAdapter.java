@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.user.academicapp.R;
-import com.example.user.academicapp.models.Section;
-import com.example.user.academicapp.models.Subject;
+import com.example.user.academicapp.models.Topic;
+import com.example.user.academicapp.models.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,30 +22,30 @@ import java.util.List;
 public class SubjectRecyclerAdapter extends RecyclerView.Adapter<SubjectRecyclerAdapter.ViewHolder> {
 
     private final Context context;
-    private List<Subject> subjectList;
+    private List<Category> categoryList;
 
-    public SubjectRecyclerAdapter(Context context, List<Subject> data) {
+    public SubjectRecyclerAdapter(Context context, List<Category> data) {
         this.context = context;
         if (data != null)
-            subjectList = data;
-        else subjectList = new ArrayList<Subject>();
+            categoryList = data;
+        else categoryList = new ArrayList<Category>();
     }
 
-    public void add(Subject s,int position) {
+    public void add(Category s,int position) {
         position = position == -1 ? getItemCount()  : position;
-        subjectList.add(position, s);
+        categoryList.add(position, s);
         notifyItemInserted(position);
     }
 
     public void remove(int position){
         if (position < getItemCount()  ) {
-            subjectList.remove(position);
+            categoryList.remove(position);
             notifyItemRemoved(position);
         }
     }
 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(context).inflate(R.layout.adapter_recy_subject, parent, false);
+        final View view = LayoutInflater.from(context).inflate(R.layout.item_recy_category, parent, false);
         return new ViewHolder(view);
     }
 
@@ -58,7 +58,7 @@ public class SubjectRecyclerAdapter extends RecyclerView.Adapter<SubjectRecycler
 
     @Override
     public int getItemCount() {
-        return subjectList.size();
+        return categoryList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -85,10 +85,10 @@ public class SubjectRecyclerAdapter extends RecyclerView.Adapter<SubjectRecycler
         holder.recy_sections.setAdapter(adapter);
     }
 
-    private List<Section> listDummy(){
-        List<Section> subjectList = new ArrayList<>();
+    private List<Topic> listDummy(){
+        List<Topic> subjectList = new ArrayList<>();
         for(int i =0; i<10; i++){
-            subjectList.add(new Section(getColor(i)));
+            subjectList.add(new Topic(getColor(i)));
         }
         return subjectList;
     }
@@ -145,7 +145,7 @@ public class SubjectRecyclerAdapter extends RecyclerView.Adapter<SubjectRecycler
 
     private void changeBackground(ViewHolder holder,int position){
         int color;
-            switch (subjectList.get(position).getColor()){
+            switch (categoryList.get(position).getColor()){
                 case "red":
                    color =context.getResources().getColor(R.color.red);
                     break;

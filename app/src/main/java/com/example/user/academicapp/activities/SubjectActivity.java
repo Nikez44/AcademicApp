@@ -14,7 +14,7 @@ import com.example.user.academicapp.R;
 import com.example.user.academicapp.adapters.SubjectRecyclerAdapter;
 import com.example.user.academicapp.fragments.NavigationDrawerFragment;
 import com.example.user.academicapp.helpers.RecyclerItemClickListener;
-import com.example.user.academicapp.models.Subject;
+import com.example.user.academicapp.models.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,12 +59,12 @@ public class SubjectActivity extends AppCompatActivity {
     }
 
     //TODO:Obtener la verdadera lista Dummy
-    private List<Subject> listDummy(){
-        List<Subject> subjectList = new ArrayList<>();
+    private List<Category> listDummy(){
+        List<Category> categoryList = new ArrayList<>();
         for(int i =0; i<10; i++){
-            subjectList.add(new Subject(getColors(i)));
+            categoryList.add(new Category(getColors(i)));
         }
-        return subjectList;
+        return categoryList;
     }
 
     private void effect(View view){

@@ -1,16 +1,16 @@
 package com.example.user.academicapp.models;
 
-public class Subject {
+public class Category {
 
     private String name;
     private String picture;
     private String color;
 
 
-    public Subject() {
+    public Category() {
     }
 
-    public Subject(String color) {
+    public Category(String color) {
         this.color = color;
     }
 
