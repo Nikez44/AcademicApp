@@ -19,12 +19,12 @@ import java.util.List;
 /**
  * Created by Elsy on 01/09/2015.
  */
-public class SubjectRecyclerAdapter extends RecyclerView.Adapter<SubjectRecyclerAdapter.ViewHolder> {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
     private final Context context;
     private List<Category> categoryList;
 
-    public SubjectRecyclerAdapter(Context context, List<Category> data) {
+    public CategoryAdapter(Context context, List<Category> data) {
         this.context = context;
         if (data != null)
             categoryList = data;
@@ -79,7 +79,7 @@ public class SubjectRecyclerAdapter extends RecyclerView.Adapter<SubjectRecycler
 
 
     private void setPropertiesRecycler(ViewHolder holder){
-        SectionRecyclerAdapter adapter = new SectionRecyclerAdapter(context,listDummy());
+        TopicAdapter adapter = new TopicAdapter(context,listDummy());
         holder.recy_sections.setHasFixedSize(true);
         holder.recy_sections.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false));
         holder.recy_sections.setAdapter(adapter);

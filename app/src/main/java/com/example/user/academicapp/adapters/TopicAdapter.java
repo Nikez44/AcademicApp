@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by Elsy on 01/09/2015.
  */
-public class SectionRecyclerAdapter extends RecyclerView.Adapter<SectionRecyclerAdapter.ViewHolder> {
+public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder> {
 
     private final Context context;
     private List<Topic> topicList;
@@ -33,7 +33,7 @@ public class SectionRecyclerAdapter extends RecyclerView.Adapter<SectionRecycler
         }
     }
 
-    public SectionRecyclerAdapter(Context context, List<Topic> data) {
+    public TopicAdapter(Context context, List<Topic> data) {
         this.context = context;
         if (data != null)
             topicList = data;

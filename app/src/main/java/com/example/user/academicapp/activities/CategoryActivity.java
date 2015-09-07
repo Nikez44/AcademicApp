@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.user.academicapp.R;
-import com.example.user.academicapp.adapters.SubjectRecyclerAdapter;
+import com.example.user.academicapp.adapters.CategoryAdapter;
 import com.example.user.academicapp.fragments.NavigationDrawerFragment;
 import com.example.user.academicapp.helpers.RecyclerItemClickListener;
 import com.example.user.academicapp.models.Category;
@@ -19,7 +19,7 @@ import com.example.user.academicapp.models.Category;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubjectActivity extends AppCompatActivity {
+public class CategoryActivity extends AppCompatActivity {
 
     private RecyclerView recy_subjects;
     private DrawerLayout drawerLayout;
@@ -52,7 +52,7 @@ public class SubjectActivity extends AppCompatActivity {
     }
 
     private void setPropertiesRecycler(){
-        SubjectRecyclerAdapter adapter = new SubjectRecyclerAdapter(this, listDummy());
+        CategoryAdapter adapter = new CategoryAdapter(this, listDummy());
         recy_subjects.setHasFixedSize(true);
         recy_subjects.setLayoutManager(new LinearLayoutManager(this));
         recy_subjects.setAdapter(adapter);
