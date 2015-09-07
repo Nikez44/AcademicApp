@@ -20,6 +20,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder> 
 
     private final Context context;
     private List<Topic> topicList;
+
     public void add(Topic s,int position) {
         position = position == -1 ? getItemCount()  : position;
         topicList.add(position, s);
@@ -47,32 +48,13 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        //     holder.txt_survey_title.setText(sectionList.get(position).getTitle());
-        changeBackground(holder,position);
+        Topic currentTopic = topicList.get(position);
+        changeBackground(holder, currentTopic.getColor());
     }
 
-    @Override
-    public int getItemCount() {
-        return topicList.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        public final LinearLayout rl_container;
-        ///  public final RobotoTextView txt_survey_title;
-        // public final RobotoTextView txt_winks_numbers;
-
-        public ViewHolder(View view) {
-            super(view);
-            //  txt_survey_title = (RobotoTextView) view.findViewById(R.id.survey_title);
-            rl_container = (LinearLayout)view.findViewById(R.id.container);
-            //  txt_winks_numbers = (RobotoTextView) view.findViewById(R.id.nwinks_number);
-        }
-    }
-
-   private void changeBackground(ViewHolder holder,int position){
+    private void changeBackground(ViewHolder holder, String colorStr){
         int color;
-        switch (topicList.get(position).getColor()){
+        switch (colorStr){
             case "red":
                 color =context.getResources().getColor(R.color.red);
                 break;
@@ -117,6 +99,25 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder> 
                 break;
         }
         holder.rl_container.setBackgroundColor(color);
+    }
+
+    @Override
+    public int getItemCount() {
+        return topicList.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        public final LinearLayout rl_container;
+        ///  public final RobotoTextView txt_survey_title;
+        // public final RobotoTextView txt_winks_numbers;
+
+        public ViewHolder(View view) {
+            super(view);
+            //  txt_survey_title = (RobotoTextView) view.findViewById(R.id.survey_title);
+            rl_container = (LinearLayout)view.findViewById(R.id.container);
+            //  txt_winks_numbers = (RobotoTextView) view.findViewById(R.id.nwinks_number);
+        }
     }
 
 }

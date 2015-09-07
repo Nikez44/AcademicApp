@@ -29,7 +29,7 @@ public class CategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subject);
+        setContentView(R.layout.activity_category);
         loadViews();
         setSupportActionBar(toolbar);
         setPropertiesRecycler();
@@ -61,8 +61,31 @@ public class CategoryActivity extends AppCompatActivity {
     //TODO:Obtener la verdadera lista Dummy
     private List<Category> listDummy(){
         List<Category> categoryList = new ArrayList<>();
-        for(int i =0; i<10; i++){
-            categoryList.add(new Category(getColors(i)));
+
+        String [] names = { "Sentido Númerico",
+                            "Pensamiento Algebraico",
+                            "Forma",
+                            "Espacio",
+                            "Medida",
+                            "Manejo de la información",
+                            "Name 7",
+                            "Name 8",
+                            "Name 9",
+                            "Name 10" };
+
+        String [] colors = { "red",
+                             "pink",
+                             "purple",
+                             "deep_purple",
+                             "indigo",
+                             "blue",
+                             "cyan",
+                             "green",
+                             "yellow",
+                             "line" } ;
+
+        for(int i =0; i<colors.length && i<names.length; i++){
+            categoryList.add(new Category(names[i], colors[i]));
         }
         return categoryList;
     }
@@ -73,56 +96,6 @@ public class CategoryActivity extends AppCompatActivity {
             recy_sections.setVisibility(View.GONE);
         }else recy_sections.setVisibility(View.VISIBLE);
     }
-
-    private String getColors(int position) {
-        String color;
-        switch (position){
-            case 0:
-                color= "red";
-                break;
-            case 1:
-                color ="pink";
-                break;
-            case 2:
-                color ="purple";
-                break;
-            case 3:
-                color ="deep_purple";
-                break;
-            case 4:
-                color ="indigo";
-                break;
-            case 5:
-                color ="blue";
-                break;
-            case 6:
-                color ="cyan";
-                break;
-            case 7:
-                color ="green";
-                break;
-            case 8:
-                color ="yellow";
-                break;
-            case 9:
-                color ="line";
-                break;
-            case 10:
-                color ="amber";
-                break;
-            case 11:
-                color ="orange";
-                break;
-            case 12:
-                color ="brown";
-                break;
-            default:
-                color ="orange";
-                break;
-        }
-        return color;
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

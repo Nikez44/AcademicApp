@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.user.academicapp.R;
 import com.example.user.academicapp.models.Topic;
@@ -51,9 +52,59 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-   //     holder.txt_survey_title.setText(subjectList.get(position).getTitle());
-        changeBackground(holder, position);
+        Category currentCategory = categoryList.get(position);
+        holder.txt_name.setText(currentCategory.getName());
+        changeBackground(holder, currentCategory.getColor());
         setPropertiesRecycler(holder);
+    }
+
+    private void changeBackground(ViewHolder holder, String colorStr){
+        int color;
+        switch (colorStr){
+            case "red":
+                color =context.getResources().getColor(R.color.red);
+                break;
+            case "pink":
+                color =context.getResources().getColor(R.color.pink);
+                break;
+            case "purple":
+                color =context.getResources().getColor(R.color.purple);
+                break;
+            case "deep_purple":
+                color =context.getResources().getColor(R.color.deep_purple);
+                break;
+            case "indigo":
+                color =context.getResources().getColor(R.color.indigo);
+                break;
+            case "blue":
+                color =context.getResources().getColor(R.color.blue);
+                break;
+            case "cyan":
+                color =context.getResources().getColor(R.color.cyan);
+                break;
+            case "green":
+                color =context.getResources().getColor(R.color.green);
+                break;
+            case "yellow":
+                color =context.getResources().getColor(R.color.yellow);
+                break;
+            case "line":
+                color =context.getResources().getColor(R.color.line);
+                break;
+            case "amber":
+                color =context.getResources().getColor(R.color.amber);
+                break;
+            case "orange":
+                color =context.getResources().getColor(R.color.orange);
+                break;
+            case "brown":
+                color =context.getResources().getColor(R.color.brown);
+                break;
+            default:
+                color =context.getResources().getColor(R.color.red);
+                break;
+        }
+        holder.rl_container.setBackgroundColor(color);
     }
 
     @Override
@@ -65,21 +116,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         public final LinearLayout rl_container;
         public final RecyclerView recy_sections;
-      ///  public final RobotoTextView txt_survey_title;
-       // public final RobotoTextView txt_winks_numbers;
+        public final TextView txt_name;
 
         public ViewHolder(View view) {
             super(view);
-          //  txt_survey_title = (RobotoTextView) view.findViewById(R.id.survey_title);
+            txt_name = (TextView) view.findViewById(R.id.category_name);
             rl_container = (LinearLayout)view.findViewById(R.id.container);
             recy_sections = (RecyclerView) view.findViewById(R.id.recy);
-          //  txt_winks_numbers = (RobotoTextView) view.findViewById(R.id.nwinks_number);
         }
     }
 
 
     private void setPropertiesRecycler(ViewHolder holder){
-        TopicAdapter adapter = new TopicAdapter(context,listDummy());
+        TopicAdapter adapter = new TopicAdapter(context, listDummy());
         holder.recy_sections.setHasFixedSize(true);
         holder.recy_sections.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false));
         holder.recy_sections.setAdapter(adapter);
@@ -87,109 +136,22 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     private List<Topic> listDummy(){
         List<Topic> subjectList = new ArrayList<>();
-        for(int i =0; i<10; i++){
-            subjectList.add(new Topic(getColor(i)));
+
+        String [] colors = { "red",
+                "pink",
+                "purple",
+                "deep_purple",
+                "indigo",
+                "blue",
+                "cyan",
+                "green",
+                "yellow",
+                "line" } ;
+
+        for (String color : colors) {
+            subjectList.add(new Topic(color));
         }
         return subjectList;
-    }
-
-    private String getColor(int position) {
-        String color;
-        switch (position){
-            case 0:
-                color= "red";
-                break;
-            case 1:
-                color ="pink";
-                break;
-            case 2:
-                color ="purple";
-                break;
-            case 3:
-                color ="deep_purple";
-                break;
-            case 4:
-                color ="indigo";
-                break;
-            case 5:
-                color ="blue";
-                break;
-            case 6:
-                color ="cyan";
-                break;
-            case 7:
-                color ="green";
-                break;
-            case 8:
-                color ="yellow";
-                break;
-            case 9:
-                color ="line";
-                break;
-            case 10:
-                color ="amber";
-                break;
-            case 11:
-                color ="orange";
-                break;
-            case 12:
-                color ="brown";
-                break;
-            default:
-                color ="orange";
-                break;
-        }
-        return color;
-    }
-
-
-    private void changeBackground(ViewHolder holder,int position){
-        int color;
-            switch (categoryList.get(position).getColor()){
-                case "red":
-                   color =context.getResources().getColor(R.color.red);
-                    break;
-                case "pink":
-                    color =context.getResources().getColor(R.color.pink);
-                    break;
-                case "purple":
-                    color =context.getResources().getColor(R.color.purple);
-                    break;
-                case "deep_purple":
-                    color =context.getResources().getColor(R.color.deep_purple);
-                    break;
-                case "indigo":
-                    color =context.getResources().getColor(R.color.indigo);
-                    break;
-                case "blue":
-                    color =context.getResources().getColor(R.color.blue);
-                    break;
-                case "cyan":
-                    color =context.getResources().getColor(R.color.cyan);
-                    break;
-                case "green":
-                    color =context.getResources().getColor(R.color.green);
-                    break;
-                case "yellow":
-                    color =context.getResources().getColor(R.color.yellow);
-                    break;
-                case "line":
-                    color =context.getResources().getColor(R.color.line);
-                    break;
-                case "amber":
-                    color =context.getResources().getColor(R.color.amber);
-                    break;
-                case "orange":
-                    color =context.getResources().getColor(R.color.orange);
-                    break;
-                case "brown":
-                    color =context.getResources().getColor(R.color.brown);
-                    break;
-                default:
-                    color =context.getResources().getColor(R.color.red);
-                    break;
-            }
-            holder.rl_container.setBackgroundColor(color);
     }
 
 }
